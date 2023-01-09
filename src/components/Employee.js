@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react'
 
-const Employee = ({idx}) => {
+const Employee = ({idx, name, position, salary}) => {
 
   return (
     <Fragment>
-      <td>Example Name</td>
-      <td className='pl-20'>Example Position</td>
+      <td>{name}</td>
+      <td className='pl-20'>{position}</td>
       <td className='pl-20'>
       <div
         data-testid={'employee-salary-div-' + idx}
       >
-        Example Salary
+        {salary}
       </div>
       {/* use this block of code when the salary field becomes editable */}
       {/* <input

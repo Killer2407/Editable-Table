@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import 'h8k-components'
 
 import { AddEmployee, Employee } from './components'
@@ -13,11 +13,15 @@ const employeesList = [
 
 const App = () => {
 
-  {
-    employeesList.map((i, index) => (
-      console.log('i')
-    )) 
+  const [_employeeList, setEmployeeList] = useState(employeesList)
+
+  const addEmployee = ({name ,position ,salary}) => {
+    console.log(name, position, salary)
+    
+    setEmployeeList([...employeesList,{id:employeesList.length+1,name,position,salary}])
+
   }
+
 
 
   return (
@@ -34,9 +38,8 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {employeesList.map((employee, idx) => (
+            {_employeeList.map((employee, idx) => (
               <tr key={employee.id} data-testid={`row-${idx}`}>
-          
                 <Employee
                   idx={idx}
                   name={employee.name}
@@ -46,7 +49,7 @@ const App = () => {
               </tr>
             ))}
             <tr>
-              <AddEmployee />
+              <AddEmployee addEmployee={addEmployee}/>
             </tr>
           </tbody>
         </table>

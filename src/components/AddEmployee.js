@@ -1,6 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
-const AddEmployee = () => {
+const AddEmployee = ({addEmployee}) => {
+  const [name, setName] = useState("")
+  const [position, setPosition] = useState("")
+  const [salary, setSalary] = useState("")
+
+  const add = () => {
+    addEmployee({name,position,salary})
+    setName("");
+    setPosition("");
+    setSalary("")
+  }
 
   return (
     <Fragment>
@@ -8,12 +18,14 @@ const AddEmployee = () => {
         <input
           data-testid='new-employee-name-input'
           placeholder='Enter Name'
+          onChange={e=>setName(e.target.value)}
         />
       </td>
       <td className='pl-20'>
         <input
           data-testid='new-employee-position-input'
           placeholder='Enter Position'
+          onChange={e=>setPosition(e.target.value)}
         />
       </td>
       <td className='pl-20'>
@@ -21,12 +33,14 @@ const AddEmployee = () => {
           data-testid='new-employee-salary-input'
           type='number'
           placeholder='Enter Salary'
+          onChange={e=>setSalary(e.target.value)}
         />
       </td>
       <td className='pl-20'>
         <button
           data-testid='add-new-employee-button'
           className='x-small w-75 ma-0 px-25'
+          onClick={()=>add()}
         >
           Add
         </button>
