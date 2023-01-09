@@ -13,32 +13,43 @@ const employeesList = [
 
 const App = () => {
 
+  {
+    employeesList.map((i, index) => (
+      console.log('i')
+    )) 
+  }
+
+
   return (
     <Fragment>
-      <h8k-navbar header={ title }></h8k-navbar>
+      <h8k-navbar header={title}></h8k-navbar>
       <div className="card w-45 mx-auto mt-75 pb-5">
         <table data-testid='table'>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Salary</th>
-                <th>Action</th>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Salary</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employeesList.map((employee, idx) => (
+              <tr key={employee.id} data-testid={`row-${idx}`}>
+          
+                <Employee
+                  idx={idx}
+                  name={employee.name}
+                  position={employee.position}
+                  salary={employee.salary}
+                />
               </tr>
-            </thead>
-            <tbody>
-              { employeesList.map((employee, idx) => (
-                <tr key={ employee.id } data-testid={ `row-${idx}` }>
-                  <Employee 
-                    idx={ idx } 
-                  />
-                </tr>
-              ))}
-              <tr>
-                <AddEmployee/>
-              </tr>
-            </tbody>
-          </table>
+            ))}
+            <tr>
+              <AddEmployee />
+            </tr>
+          </tbody>
+        </table>
       </div>
     </Fragment>
   )
