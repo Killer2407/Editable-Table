@@ -17,12 +17,17 @@ const App = () => {
 
   const addEmployee = ({name ,position ,salary}) => {
     console.log(name, position, salary)
-    
     setEmployeeList([...employeesList,{id:employeesList.length+1,name,position,salary}])
-
   }
 
+  const updateSalary = ({id, salary}) => {
+    console.log('id', id)
+    console.log('salary', salary);
+    let newArray=[..._employeeList];
+    newArray[id].salary=salary;
+    setEmployeeList(newArray)
 
+  }
 
   return (
     <Fragment>
@@ -45,11 +50,12 @@ const App = () => {
                   name={employee.name}
                   position={employee.position}
                   salary={employee.salary}
+                  updateSalary={updateSalary}
                 />
               </tr>
             ))}
             <tr>
-              <AddEmployee addEmployee={addEmployee}/>
+              <AddEmployee addEmployee={addEmployee} />
             </tr>
           </tbody>
         </table>
