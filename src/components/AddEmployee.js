@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react'
 
-const AddEmployee = ({addEmployee}) => {
+const AddEmployee = ({ addEmployee }) => {
   const [name, setName] = useState("")
   const [position, setPosition] = useState("")
   const [salary, setSalary] = useState("")
 
   const add = () => {
-    addEmployee({name,position,salary})
+    addEmployee({ name, position, salary })
     setName("");
     setPosition("");
     setSalary("")
@@ -19,7 +19,7 @@ const AddEmployee = ({addEmployee}) => {
           data-testid='new-employee-name-input'
           placeholder='Enter Name'
           value={name}
-          onChange={e=>setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
         />
       </td>
       <td className='pl-20'>
@@ -27,7 +27,7 @@ const AddEmployee = ({addEmployee}) => {
           data-testid='new-employee-position-input'
           placeholder='Enter Position'
           value={position}
-          onChange={e=>setPosition(e.target.value)}
+          onChange={e => setPosition(e.target.value)}
         />
       </td>
       <td className='pl-20'>
@@ -36,15 +36,15 @@ const AddEmployee = ({addEmployee}) => {
           type='number'
           value={salary}
           placeholder='Enter Salary'
-          onChange={e=>setSalary(e.target.value)}
+          onChange={e => setSalary(e.target.value)}
         />
       </td>
       <td className='pl-20'>
         <button
           data-testid='add-new-employee-button'
           className='x-small w-75 ma-0 px-25'
-          disabled={!name ||!position || !salary}
-          onClick={()=>add()}
+          disabled={!name || !position || !salary}
+          onClick={() => add()}
         >
           Add
         </button>
